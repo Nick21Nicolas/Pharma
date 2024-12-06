@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="resp.css">
+    <title>MindBloom+</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- AOS Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="#">
+                <img src="favicon.png" alt="MindBloom Logo">
+            </a>
+            <input type="checkbox" id="manu" hidden>
+            <nav>
+                <a href="#mission-section">Objetivo</a>
+                <a href="#product-section">Produto</a>
+                <a href="#contact-section">Contato</a>
+            </nav>
+            <label for="manu">
+                <img src="menu.png" alt="Menu">
+            </label>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <section class="banner-section">
+        <div class="container flex">
+            <div class="banner-left w50" data-aos="fade-right">
+                <h4>Pioneiros em Psilocibina</h4>
+                <h1>MindBloom+: Redefinindo a Saúde Mental e Abrindo Caminhos para um Novo Bem-Estar.</h1>
+            </div>
+            <div class="banner-right w50" data-aos="fade-left">
+                <img src="L.jpg" alt="Banner Image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Objetivo -->
+    <section class="mission-section" id="mission-section">
+        <div class="container">
+            <div class="background">
+                <div class="msics-mission" data-aos="fade-up">
+                    <h4>MINDBLOOM</h4>
+                    <h2>Objetivo</h2>
+                    <p>Desenvolver e oferecer um produto inovador à base de psilocibina natural, focado em atender a necessidades médicas não atendidas no campo da saúde mental.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produto -->
+    <section class="product-section" id="product-section">
+        <div class="container flex">
+            <div class="product-left w50" data-aos="fade-right">
+                <h4>PRODUTO</h4>
+                <h1>MindBloom - Um medicamento inovador de psilocibina</h1>
+                <p>O MindBloom+ é um suplemento terapêutico revolucionário feito a partir de psilocibina extraída de cogumelos naturais, oferecendo uma abordagem holística e personalizada.</p>
+            </div>
+            <div class="product-right w50" data-aos="fade-left">
+                <img src="lab1.jpg" alt="Lab Image 1">
+                <img src="lab2.webp" alt="Lab Image 2">
+                <img src="lab3.avif" alt="Lab Image 3">
+            </div>
+        </div>
+    </section>
+
+    <!-- Gráfico -->
+    <section class="chart-section">
+        <div class="container">
+            <h2>Eficácia do Produto</h2>
+            <canvas id="chartEficacia" width="400" height="400"></canvas>
+        </div>
+    </section>
+
+    <!-- Questionário -->
+    <section class="quiz-section">
+        <div class="container">
+            <h2>Descubra como o MindBloom pode ajudar você!</h2>
+            <form id="quiz">
+                <label>Qual é sua principal preocupação?</label><br>
+                <input type="radio" name="issue" value="Depressão"> Depressão<br>
+                <input type="radio" name="issue" value="Ansiedade"> Ansiedade<br>
+                <input type="radio" name="issue" value="TEPT"> TEPT<br><br>
+                <button type="button" onclick="showResults()">Enviar</button>
+            </form>
+            <div id="results" style="display:none;">
+                <h3>Resultados:</h3>
+                <p id="resultText"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parceiros -->
+    <section class="our-medical-partners">
+        <div class="container">
+            <h1>Parceiros</h1>
+            <div class="partners" data-aos="zoom-in">
+                <a href="https://brasil.un.org/pt-br">
+                    <img src="logo1.png" alt="Parceiro 1">
+                </a>
+                <a href="https://us.lifecykel.com/">
+                    <img src="logo2.webp" alt="Parceiro 2">
+                </a>
+                <a href="https://fungi.com/">
+                    <img src="logo3.png" alt="Parceiro 3">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="contact-section" id="contact-section">
+        <div class="container flex">
+            <div class="contact-left w50">
+                <h1>Contate-Nos</h1>
+                <form>
+                    <input type="text" placeholder="Nome Completo" required> <br>
+                    <input type="email" placeholder="Seu Email" required><br>
+                    <textarea placeholder="Mensagem..." required></textarea><br>
+                    <input type="submit" value="Enviar">
+                </form>
+            </div>
+            <div class="contact-right w50">
+                <h2>Feito por <a href="https://github.com/Nick21Nicolas" target="_blank">Nicolas Priole</a> 😎.</h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <section class="footer-section">
+        <div class="container flex">
+            <div class="footer-left w50">
+                Copyright © 2024 <a href="https://lacasadelassetas.com/pt/202-tipos-de-cogumelos-comestiveis">MindBloom</a>
+            </div>
+            <div class="footer-right w50">
+                Powered By : <a href="https://github.com/Nick21Nicolas">Developer Nicolas Priole</a>.
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => { AOS.init(); });
+
+        // Chart.js
+        const ctx = document.getElementById('chartEficacia').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Depressão', 'Ansiedade', 'TEPT'],
+                datasets: [{
+                    label: 'Eficácia (%)',
+                    data: [85, 78, 92],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                }]
+            }
+        });
+
+        // Quiz Results
+        function showResults() {
+            const issues = document.querySelector('input[name="issue"]:checked').value;
+            const resultText = document.getElementById('resultText');
+            if (issues === "Depressão") {
+                resultText.innerText = "O MindBloom é 85% eficaz no tratamento de depressão.";
+            } else if (issues === "Ansiedade") {
+                resultText.innerText = "O MindBloom é 78% eficaz no tratamento de ansiedade.";
+            } else {
+                resultText.innerText = "O MindBloom é 92% eficaz no tratamento de TEPT.";
+            }
+            document.getElementById('results').style.display = "block";
+        }
+    </script>
+</body>
+</html>
